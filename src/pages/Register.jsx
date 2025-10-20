@@ -4,6 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const { setUser, createUser } = use(AuthContext);
+
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -29,7 +31,6 @@ const Register = () => {
         </h1>
         <form onSubmit={handleRegister} className="card-body -mt-2">
           <fieldset className="fieldset">
-
             {/* ---Name--- */}
             <label className="label">Name</label>
             <input
@@ -49,7 +50,7 @@ const Register = () => {
               placeholder="Photo URL"
               required
             />
-            
+
             {/* ---Email--- */}
             <label className="label">Email</label>
             <input
