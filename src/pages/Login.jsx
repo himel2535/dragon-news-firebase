@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
-import Loading from "./Loading";
 
 const Login = () => {
   const { login, setUser } = use(AuthContext);
+
+  const [error, setError] = useState("");
 
   const location = useLocation();
 
@@ -26,7 +27,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        alert(error.message);
+        setError(error.code);
       });
     console.log(email, password);
   };
@@ -58,6 +59,9 @@ const Login = () => {
               placeholder="Password"
               required
             />
+           {
+            error && <p className="text-red-600 font-xs">{error}</p>
+           }
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
